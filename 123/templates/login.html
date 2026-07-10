@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login - Inventario</title>
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="card p-4 shadow" style="width: 380px;">
+        <h3 class="text-center mb-3">Iniciar Sesión</h3>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, msg in messages %}
+                    <div class="alert alert-{{ category }} py-2 text-center">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input type="text" name="usuario" class="form-control" required autocomplete="off">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" name="contrasena" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-3">Entrar</button>
+        </form>
+
+        <!-- Sección de credenciales sugeridas -->
+        <div class="card bg-light p-2 mt-2 border-dashed" style="font-size: 0.85rem;">
+            <p class="text-muted text-center mb-1 fw-bold">🔑 Credenciales de demostración:</p>
+            <div class="d-flex justify-content-between border-bottom pb-1 mb-1">
+                <span><strong>Admin:</strong> admin</span>
+                <span class="text-muted">Pass: admin123</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span><strong>Empleado:</strong> empleado</span>
+                <span class="text-muted">Pass: 1234</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
